@@ -1,6 +1,871 @@
-Hello world!
-sdasdsdasdjshdfasjhkfbasdf
-asdsfkdkjasdfhaskfdjhf
-sdafjknasdkflfhlfj
-skajdfasfkjhfaskdjfha
-asdjhasdkfjhafsdkj
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Horário de Estudo</title>
+        <link rel="icon" href="http://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/fbreader-icon.png" />
+        <style type="text/css">
+            body {
+                font-family: monospace;
+                background: #eaeaea
+            }
+            .container {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%);
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                overflow: hidden;
+                border-radius: 25px;
+            }
+            th,
+            td {
+                padding: 15px;
+                background-color: #dcd7d7;
+            }
+            thead td {
+                background-color: #625757;
+                text-align: center;
+                color: white;
+            }
+            thead th {
+                background-color: #9d8f8f;
+            }
+            tbody td {
+                text-align: center;
+            }
+            .biologia{
+                background-color: #3c75ab;
+            }
+            .historia{
+                background-color: #c6e377;
+            }
+            .quimica{
+                background-color: #408ab4;
+            }
+            .portugues{
+                background-color: #fb3569;
+            }
+            .geografia{
+                background-color: #84b35d;
+            }
+            .fisica{
+                background-color: #65c6c4;
+            }
+            .matematica{
+                background-color: #fffa67;
+            }
+            .filosofiasociologia{
+                background-color: #d2f574;
+            }
+            .redacao{
+                background-color: #f68787;
+            }
+            .outros{
+                background-color: #ffffff;
+            }
+            progress{
+                -webkit-appearance: none;
+                width: 300px;
+            }
+            progress::-webkit-progress-bar {
+                background: #9d8f8f;
+                border-radius: 6px;
+            }
+            progress::-webkit-progress-value {
+                background: #eaeaea;
+                border-radius: 6px;
+            }
+        </style>
+        <script>
+            window.onload = function(){
+                hoje = new Date();
+                inicio = new Date("February 03, 2019");
+                enem = new Date("November 03, 2019");
+                tempo_inicio = parseInt((hoje.getTime() - inicio.getTime()) / 86400000);
+                tempo_enem = parseInt((enem.getTime() - hoje.getTime()) / 86400000);
+                progresso = ((tempo_inicio / (tempo_inicio + tempo_enem)) * 100).toFixed(2);
+                document.getElementById("dias_corridos").innerHTML = tempo_inicio;
+                document.getElementById("dias_restantes").innerHTML = tempo_enem;
+                document.getElementById("progresso_barra").value = progresso;
+                document.getElementById("progresso_texto").innerHTML = progresso;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="3">Já se passaram <b id="dias_corridos"></b> dias.</td>
+                        <td><progress id="progresso_barra" max="100"></progress><br><a id="progresso_texto"></a>% concluído.</td>
+                        <td colspan="3">Faltam <b id="dias_restantes"></b> dias para o ENEM.</td>                        
+                    </tr>
+                </thead>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">HORÁRIO BASE</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia</td> <!--Segunda-->
+                        <td class="quimica">Química</td> <!--Terça-->
+                        <td class="geografia">Geografia</td> <!--Quarta-->
+                        <td class="matematica">Matemática</td> <!--Quinta-->
+                        <td class="portugues">Português</td> <!--Sexta-->
+                        <td class="outros">Revisão</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História</td> <!--Segunda-->
+                        <td class="portugues">Português</td> <!--Terça-->
+                        <td class="fisica">Física</td> <!--Quarta-->
+                        <td class="historia">História</td> <!--Quinta-->
+                        <td class="matematica">Matemática</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química</td> <!--Segunda-->
+                        <td class="biologia">Biologia</td> <!--Terça-->
+                        <td class="matematica">Matemática</td> <!--Quarta-->
+                        <td class="fisica">Física</td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia e Sociologia</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação</td> <!--Segunda-->
+                        <td class="redacao">Redação</td> <!--Terça-->
+                        <td class="redacao">Redação</td> <!--Quarta-->
+                        <td class="redacao">Redação</td> <!--Quinta-->
+                        <td class="redacao">Redação</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 01 - 03/02 a 09/02</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="outros">Outros - Análise de horário de estudo</td> <!--Segunda-->
+                        <td class="outros">Outros - Análise de horário de estudo</td> <!--Terça-->
+                        <td class="outros">Simulado - 10 Questões (06/10)</td> <!--Quarta-->
+                        <td class="redacao">Redação - As dificuldades da formação universitária</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Razão e Proporção (16/20)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td class="redacao">Redação - Sistema de cotas para o acesso à educação: avanço ou retrocesso?</td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="redacao">Redação - A importância da educação à distância no Brasil</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 02 - 10/02 a 16/02</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Ecologia - Cadeia e teia alimentar (11/20)</td> <!--Segunda-->
+                        <td class="quimica">Química - Funções orgânicas - Nitrogenadas (16/20)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Questões Ambientais (17/20)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Matemática Financeira - Porcentagem (16/20)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - História do Brasil - Brasil República - Era Vargas (1930-1945) (10/20)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto - Funções da Linguagem (15/20)</td> <!--Terça-->
+                        <td class="fisica">Física - Mecânica - Dinâmica - Trabalho e energia (18/20)</td> <!--Quarta-->
+                        <td class="quimica">Química - Funções orgânicas - Outras funções (17/20)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Funções orgânicas - Hidrocarbonetos (13/20)</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Ecologia - Ciclos Biogeoquímicos (16/20)</td> <!--Terça-->
+                        <td class="biologia">Biologia - Ecologia - Ecossistemas (13/20)</td> <!--Quarta-->
+                        <td class="fisica">Física - Mecânica - Dinâmica - Leis de Newton (11/20)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - As dificuldades dos jovens de ingressarem no mercado de trabalho</td> <!--Segunda-->
+                        <td class="redacao">Redação - Possíveis impactos da reforma brasileira do Ensino Médio</td> <!--Terça-->
+                        <td class="redacao">Redação - Os desafios da mobilidade urbana no Brasil</td> <!--Quarta-->
+                        <td class="redacao">Redação - Evasão escolar e a realidade brasileira</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 03 - 17/02 a 23/02</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Ecologia - Estudo das populações (16/20)</td> <!--Segunda-->
+                        <td class="outros">Análise de horário de estudo</td> <!--Terça-->
+                        <td class="quimica">Química - Propriedade dos materiais (15/18)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Teoria dos conjuntos & Intervalos reais (11/12)</td> <!--Quinta-->
+                        <td class="portugues">Português - Interpretação de Texto - Figuras de Linguagem (12/19)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - História do Brasil - Brasil República - Governos Militares (1964-1985) (16/20)</td> <!--Segunda-->
+                        <td class="redacao">Redação - Os hábitos de consumo no Brasil</td> <!--Terça-->
+                        <td class="geografia">Geografia - Geral - Aspectos Econômicos - Geopolítica (16/20)</td> <!--Quarta-->
+                        <td class="historia">História - História do Brasil - Período Colonial (1530-1822) - Ciclos Econômicos (14/20)</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Estatística (17/19)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Funções orgânicas - Oxigenadas (16/20)</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td class="outros">Outros - Desafio 08 2019 (09/13)</td> <!--Quarta-->
+                        <td class="fisica">Física - Ondulatória - Fenômenos Ondulatórios (15/20)</td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia - Temática - Ética (12/20)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="outros">Outros - Desafio 07 2019 (11/12)</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td class="redacao">Redação - Riscos do aumento do consumo de álcool e de outras drogas entre os jovens no Brasil</td> <!--Quarta-->
+                        <td class="redacao">Redação - Análise de tema - Cultura do estupro no Brasil</td> <!--Quinta-->
+                        <td class="redacao">Redação - O combate à cultura do estupro no Brasil</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - Homofobia em questão no Brasil</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 04 - 24/02 a 02/03</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Ecologia - Níveis de organização (18/20)</td> <!--Segunda-->
+                        <td class="historia">História - Contagem do tempo & Linhda do tempo (08/09)</td> <!--Terça-->
+                        <td class="biologia">Biologia - Origem da Vida & Evolução & Teoria Sintética da Evolução & Introdução ao Estudo da Célula (21/25)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Intervalos Reais & Regra de Três & Razões e Proporções & Porcentagem e Juros (16/17)</td> <!--Quinta-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Agropecuária (12/20)</td> <!--Sexta-->
+                        <td class="filosofiasociologia">Filosofia - Ética e moral</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - História do Brasil - Brasil República - Governos Populistas (1945-1964) (18/20)</td> <!--Segunda-->
+                        <td class="geografia">Geografia - Cartografia & Geosfera (08/09)</td> <!--Terça-->
+                        <td class="quimica">Química - Evolução dos Modelos Atômicos & Átomo e Sua Estrutura & Estudo da Eletrosfera (20/24)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Geometria Espacial (14/20)</td> <!--Quinta-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica (13/20)</td> <!--Sexta-->
+                        <td class="fisica">Física - Teorema da Energia Cinética</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrios químicos - Constante de equilíbrio (13/20)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto - Textos não verbais e mistos (15/20)</td> <!--Terça-->
+                        <td class="fisica">Física - Vetores & Fundamentos da Cinemática (10/12)</td> <!--Quarta-->
+                        <td class="redacao">Redação - As consequências da exploração do meio ambiente perante uma legislação ambiental ineficaz no Brasil</td> <!--Quinta-->
+                        <td class="outros">Outros - Desafio 09 2019 (11/13)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrio químico</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Ecologia - Poluição ambiental (17/20)</td> <!--Terça-->
+                        <td class="redacao">Redação - As incompreensões quanto à diversidade de gênero em debate no Brasil</td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - Os desafios da segurança pública brasileira</td> <!--Segunda-->
+                        <td class="quimica">Química - Equilíbrio químico</td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td class="redacao">Redação - O carnaval como símbolo da nacionalidade brasileira no século XXI</td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 05 - 03/03 a 09/03</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Ecologia - Relações ecológicas (16/20)</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Ecologia - Sucessão ecológica (14/18)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Comércio (16/20)</td> <!--Quarta-->
+                        <td class="historia">História - Revolta da Chibata & Governo Vargas (1951 a 1954)</td> <!--Quinta-->
+                        <td class="portugues">Português - Interpretação de Texto - Variantes Linguísticas (16/19)</td> <!--Sexta-->
+                        <td class="portugues">Português - Escolas literárias</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - História do Brasil - Brasil República - Nova República (14/20)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto - Ambiguidade, Polissemia, Homônimos e Parônimos (15/19)</td> <!--Terça-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica (09/20)</td> <!--Quarta-->
+                        <td class="redacao">Redação - Os meios de combate ao preconceito linguístico no Brasil</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Geometria Plana - Fundamentos (15/20)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrios químicos - Deslocamente de equilíbrio (13/20)</td> <!--Segunda-->
+                        <td class="quimica">Química - Equilíbrio químico</td> <!--Terça-->
+                        <td class="matematica">Matemática - Estatística (14/20)</td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia - Temática - Filosofia Política - Outros (15/20)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="outros">Outros - Desafio 10 2019 (10/13)</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="redacao">Redação - A marginalização das pessoas negras em debate no Brasil</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - Grafite x pichação os limites da arte urbana no Brasil</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 06 - 10/03 a 16/03</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Ecologia (15/20)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto - Coesão e Coerência (16/20)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Energia (19/20)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Geometria Plana - Polígonos (13/20)</td> <!--Quinta-->
+                        <td class="portugues">Português - Interpretação de Texto - Textos Verbais - Narrativo (13/19)</td> <!--Sexta-->
+                        <td class="outros">Desafio 11 2019 (10/13)</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - História do Brasil - Brasil República - República Velha (1889-1930) (10/20)</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td class="matematica">Matemática - Geometria Plana - Área e Perímetro das Figuras Planas (19/20)</td> <!--Quarta-->
+                        <td class="historia">História - Brasil República (12/19)</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Geometria Plana - Polígonos Regulares (16/20)</td> <!--Sexta-->
+                        <td class="filosofiasociologia">Filosofia - Filosofia antiga - Aristóteles (13/20)</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td class="redacao">Redação - As causas do aumento do suicídio entre os jovens no Brasil</td> <!--Quarta-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica - Corrente Elétrica</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td class="redacao">Redação - Os desafios da inserção de hábitos alimentares saudáveis entre crianças e adolescentes no Brasil</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 07 - 17/03 a 23/03</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Genética - Primeira lei da genética (14/20)</td> <!--Segunda-->
+                        <td class="outros">Outros - Desafio 12 2019 (10/13)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Extrativismo (14/20)</td> <!--Quarta-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica (17/22)</td> <!--Quinta-->
+                        <td class="portugues">Português - Vanguardas Europeias (17/22)</td> <!--Sexta-->
+                        <td class="redacao">Redação - Análise de tema - Os desafios da ressocialização do preso em meio a superlotação do sistema carcerário brasileiro</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - Temática - Historiografia (18/20)</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td class="matematica">Matemática - Geometria Plana - Relações Métricas do Triângulo Retângulo (15/20)</td> <!--Quarta-->
+                        <td class="redacao">Redação - As causas das pessoas em situação de rua no Brasil</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Trigonometria - Lei dos senos e Lei dos cossenos (2/3)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrios químicos - Constante de equilíbrio & Deslocamento de equilíbrio (12/20)</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - Os desafios da ressocialização do preso em meio a superlotação do sistema carcerário brasileiro</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 08 - 24/03 a 30/03</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Balanceamento & Nox (18/20) & Reações endotérmicas e exotérmicas (4/4)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto - Figuras de Linguagem (15/20)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Indústria (14/19)</td> <!--Quarta-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica (15/17)</td> <!--Quinta-->
+                        <td class="outros">Outros - Desafio 13 2019 (09/12)</td> <!--Sexta-->
+                        <td class="redacao">Redação - As consequências da má destinação do lixo no Brasil</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - Análise de tema - Violência obstetrícia</td> <!--Segunda-->
+                        <td class="quimica">Química - Equilíbrios químicos - Eletroquímica - Conceitos de NOX (16/20)</td> <!--Terça-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica - Geradores e receptores (5/5)</td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td class="outros">Outros - Simulado Estuda.com - Matemática (27/30 - 773,57)</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td class="redacao">Redação - A necessidade da discussão do respeito à dignidade da mulher durante o parto no Brasil</td> <!--Terça-->
+                        <td class="redacao">Redação - Live - Título</td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 09 - 31/03 a 06/04</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Genética - Segunda lei da genética (16/20)</td> <!--Segunda-->
+                        <td class="quimica">Química - Equilíbrios químicos - Eletroquímica - Reações REDOX (16/18)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Transportes/Comunicações (17/19)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Geometria Plana (08/08)</td> <!--Quinta-->
+                        <td class="portugues">Português - Interpretação de Texto - Textos Verbais - Dissertativo (15/20)</td> <!--Sexta-->
+                        <td class="redacao">Redação - Correções</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - Temática - Política (14/18)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto - Textos Verbais - Descritivo (15/20)X</td> <!--Terça-->
+                        <td class="fisica">Física - Elétrica - Eletrodinâmica (09/12)</td> <!--Quarta-->
+                        <td class="historia">História - Revolas Nativistas e Separatistas</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Geometria Plana (09/11)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrios químicos - Eletroquímica - Conceitos de NOX (18/20)</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Genética - Conceitos básicos</td> <!--Terça-->
+                        <td class="matematica">Matemática - Geometria Plana (02/02)</td> <!--Quarta-->
+                        <td class="outros">Outros - Desafio 14 2019 (11/13)</td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia - Filosofia Antiga - Sócrates</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="outros">Outros - Simulado Estuda.com - Natureza (27/30 - 806,36)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 10 - 07/04 a 13/04</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrios químicos - Eletroquímica - Pilhas eletroquímicas (12/18)</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Genética (9/12)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Econômicos - Geopolítica (15/19)</td> <!--Quarta-->
+                        <td class="matematica">Matemática - Geometria Espacial - Cilindros & Cones (18/20)</td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia - Filosofia antiga - Platão</td> <!--Sexta-->
+                        <td class="outros">Revisão</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - Temática - Problemas sociais (13/20)</td> <!--Segunda-->
+                        <td class="redacao">Redação - Análise de tema - Os meios de combate ao abuso sexual de criança e adolescentes no Brasil</td> <!--Terça-->
+                        <td class="matematica">Matemática - Geometria Espacial - Troncos & Esferas (15/19)</td> <!--Quarta-->
+                        <td class="historia">História - Temática - Conhecimentos gerais & Constituições (08/18)</td> <!--Quinta-->
+                        <td class="redacao">Redação - Os impactos dos valores religiosos para a estruturação das famílias no Brasil</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - Análise de tema - Os meios de combate ao abuso sexual de criança e adolescentes no Brasil</td> <!--Segunda-->
+                        <td class="redacao">Redação - Os meios de combate ao abuso sexual de criança e adolescentes no Brasil</td> <!--Terça-->
+                        <td class="outros">Outros - Desafio 15 2019 (11/13)</td> <!--Quarta-->
+                        <td class="fisica">Física - Elétrica - Eletrostática (02/02)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="outros">Outros - Caligrafia & Matriz de Referência</td> <!--Segunda-->
+                        <td></td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td class="outros">Outros - Simulado Estuda.com - Humanas (25/30 - 704.16)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 11 - 14/04 a 20/04</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td class="quimica">Química - Equilíbrios químicos (9/17)</td> <!--Terça-->
+                        <td class="biologia">Biologia - Genética (19/20)</td> <!--Quarta-->
+                        <td class="redacao">Redação - Correções</td> <!--Quinta-->
+                        <td class="matematica">Matemática - Geometria Espacial - Pirâmides e Prismas</td> <!--Sexta-->
+                        <td class="redacao">Redação - A educação financeira e sua importância na vida do jovem brasileiro</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto (13/20)</td> <!--Terça-->
+                        <td class="redacao">Redação - A previdência social em debate no Brasil</td> <!--Quarta-->
+                        <td class="biologia">Biologia (04/05)</td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia - Filosofia Antiga (14/14)</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td class="biologia">Biologia - Genética</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Humanos (16/20)</td> <!--Quarta-->
+                        <td class="outros">Outros - Desafio 16 2019 (09/13)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 12 - 21/04 a 27/04</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - pH e pOH (19/20)</td> <!--Segunda-->
+                        <td class="quimica">Química - Equilíbrios químicos - Equilíbrio iônico da água (pH e pOH) (17/19)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Naturais (19/20)</td> <!--Quarta-->
+                        <td class="fisica">Física - Elétrica - Eletrostática (10/12)</td> <!--Quinta-->
+                        <td class="filosofiasociologia">Sociologia - Temática (11/12)</td> <!--Sexta-->
+                        <td class="outros">Outros - Simulado Vírus - Linguagens</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="outros">Outros - Simulado Estuda.com - Linguagens (28/33 - 632.97)</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Genética (11/20)</td> <!--Terça-->
+                        <td class="matematica">Matemática - Geometria Espacial (15/18)</td> <!--Quarta-->
+                        <td class="historia">História - Temática (09/10)</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td class="outros">Outros - Simulado Vírus - Humanas</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td></td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de Texto (13/16)</td> <!--Terça-->
+                        <td class="redacao">Redação - Os caminhos para combater as doenças vetoriais no Brasil</td> <!--Quarta-->
+                        <td class="redacao">Redação - As dificuldades de combater os discursos de ódio nas mídias sociais no Brasil</td> <!--Quinta-->
+                        <td></td> <!--Sexta-->
+                        <td class="outros">Outros - Simulado Vírus - Redação</td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="7">SEMANA 13 - 28/04 a 04/05</td>
+                    </tr> 
+                    <tr>
+                        <th>Domingo</th>
+                        <th>Segunda</th>
+                        <th>Terça</th>
+                        <th>Quarta</th>
+                        <th>Quinta</th>
+                        <th>Sexta</th>
+                        <th>Sábado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="biologia">Biologia - Genética (16/20)</td> <!--Segunda-->
+                        <td class="quimica">Química - Cálculos químicos (18/20)</td> <!--Terça-->
+                        <td class="geografia">Geografia - Brasil - Aspectos Naturais (16/20)</td> <!--Quarta-->
+                        <td class="outros">Outros - Desafio 18 2019 (08/11)</td> <!--Quinta-->
+                        <td class="portugues">Português</td> <!--Sexta-->
+                        <td class="outros">Revisão</td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="historia">História - Temática (12/17)</td> <!--Segunda-->
+                        <td class="biologia">Biologia - Taxonomia (17/20)</td> <!--Terça-->
+                        <td class="matematica">Matemática - Geometria Espacial & Geometria Plana (16/16)</td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="matematica">Matemática</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="quimica">Química - Equilíbrios químicos (18/19)</td> <!--Segunda-->
+                        <td class="portugues">Português - Interpretação de texto (17/20)</td> <!--Terça-->
+                        <td><!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="filosofiasociologia">Filosofia e Sociologia</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                    <tr>
+                        <td></td> <!--Domingo-->
+                        <td class="redacao">Redação - As consequências da dependência do transporte rodoviário em debate no Brasil</td> <!--Segunda-->
+                        <td class="outros">Outros - Simulado Estuda.com - Matemática (/-)</td> <!--Terça-->
+                        <td></td> <!--Quarta-->
+                        <td></td> <!--Quinta-->
+                        <td class="redacao">Redação</td> <!--Sexta-->
+                        <td></td> <!--Sábado-->
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+    </body>
+</html>
